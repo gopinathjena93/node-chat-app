@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
+      <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" type="text/css" href="style.css" >
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="socket.io/socket.io.js"></script>
+      <script src="script.js"></script>
+      <title>Simple Chat App</title>
+   </head>
+
+  <body>
+    <header>
+      <h1>Super Chat</h1>
+    </header>
+
+    <section>
+      <div id="change_username">
+  <input id="username" type="text" />
+  <button id="send_username" type="button" onclick="AddUser()">Change username</button>
+      </div>
+    </section>
+
+    <section id="chatroom">
+      <section id="feedback"></section>
+    </section>
+
+    
+
+    <section id="input_zone"> 
+      <input id="chat_message" class="vertical-align" type="text" />
+      <button id="send_message" class="vertical-align" type="button" onclick="SendMessage()">Send</button>
+</html>
