@@ -62,9 +62,7 @@ function onSignIn(googleUser) {
     	localStorage.setItem("email", email);
     	localStorage.setItem("Image", Image);
     	window.location.href="/chatroom";
-    } else { 
-   		alert("Something went wrong please try again")
-    }
+    } 
 }
 
 // Sign-in failure callback
