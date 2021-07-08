@@ -18,6 +18,10 @@ socket.on( 'chat_message', (data) => {
 	$('#chatroom').append("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
 })
 
+app.get("/chatroom",(req,res) => {
+	res.sendFile(__dirname + "/public/chatroom.html")	
+})
+
 socket.on('new_client', (data) => {
 	console.log(` hello world`)
 	$('#chatroom').append("<p class='message'>New User Added</p>")
