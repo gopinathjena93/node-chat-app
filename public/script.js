@@ -1,4 +1,4 @@
-var socket = io.connect( 'http://192.168.0.11:4000' );
+var socket = io.connect( 'https://gopi-node-chat-app.herokuapp.com/' );
 
 function SendMessage() {
 	localStorage_username = localStorage.getItem("username");
