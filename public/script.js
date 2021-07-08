@@ -55,7 +55,7 @@ function onSignIn(googleUser) {
     var name = profile.getName();
     var email = profile.getEmail();    
     var Image = profile.getImageUrl();   
-    const userData = {googleTockenId.googleTockenId,name:name,email.email.Image:Image}         
+    const userData = {googleTockenId:googleTockenId,name:name,email:email,Image:Image}          
     if(userData.length == 4 ) {
     	localStorage.setItem("userData", userData);
     	window.location.href="/chatroom";
