@@ -91,9 +91,11 @@ function signOut() {
     if(confirm("Are you sure to signout?")){
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
-            $("#loginDetails").hide();
-            $("#loaderIcon").hide('fast');
-            $("#g-signin2").show('fast');
+    localStorage.removeItem("googleTockenId");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("Image");  
+		window.location.href="/";
         });
 
         auth2.disconnect();
