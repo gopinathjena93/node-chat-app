@@ -53,8 +53,15 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
     var googleTockenId = profile.getId();
     var name = profile.getName();
-    var email = profile.getEmail();
-    var profile = profile.getImageUrl();        
+    var email = profile.getEmail();    
+    var Image = profile.getImageUrl();   
+    const userData = {googleTockenId.googleTockenId,name:name,email.email.Image:Image}         
+    if(userData.length == 4 ) {
+    	localStorage.setItem("userData", userData);
+    	window.location.href="/chatroom";
+    } else { 
+   		alert("Something went wrong please try again")
+    }
 }
 
 // Sign-in failure callback
