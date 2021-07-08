@@ -11,6 +11,8 @@ var io = socket.listen( server );
 
 io.sockets.on( 'connection', function( client ) {
   	console.log( "New client !" );
+    io.sockets.emit( 'new_client',{message:"New Client"} );
+
 
   	username = "New User";
   	client.on( 'chat_message', ( data ) => {

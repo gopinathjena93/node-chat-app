@@ -1,4 +1,4 @@
-var socket = io.connect( 'http://192.168.0.26:4000' );
+var socket = io.connect( 'http://192.168.0.11:4000' );
 
 function SendMessage() {
 	localStorage_username = localStorage.getItem("username");
@@ -16,6 +16,11 @@ socket.on( 'chat_message', (data) => {
 	console.log(data);
 	console.log("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
 	$('#chatroom').append("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
+})
+
+socket.on('new_client', (data) => {
+	console.log(` hello world`)
+	$('#chatroom').append("<p class='message'>New User Added</p>")
 })
 
 $(document).ready(function() {
