@@ -28,6 +28,11 @@ io.sockets.on( 'connection', function( client ) {
 	});
 });
 
+app.get("/chatroom",(req,res) => {
+	res.sendFile(__dirname + "/public/chatroom.html")	
+})
+
+
 server.listen( port,() => {
 	console.log(`Server running at ${port}`);
 });
