@@ -28,6 +28,10 @@ io.sockets.on( 'connection', function( client ) {
 	});
 });
 
+app.get("/",(req,res) => {
+	res.sendFile(__dirname + "/public/index.html")	
+})
+
 app.get("/chatroom",(req,res) => {
 	res.sendFile(__dirname + "/public/chatroom.html")	
 })
