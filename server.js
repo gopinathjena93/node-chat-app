@@ -3,6 +3,8 @@ var express = require( 'express' );
 var http = require( 'http' );
 var path = require( 'path' );
 
+const port = process.env.PORT || 3000
+
 var app = express();
 var server = http.createServer( app );
 
@@ -26,6 +28,6 @@ io.sockets.on( 'connection', function( client ) {
 	});
 });
 
-server.listen( 4000,() => {
-	console.log('Server running at 4000');
+server.listen( port,() => {
+	console.log(`Server running at ${port}`);
 });
