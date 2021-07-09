@@ -28,12 +28,12 @@ socket.on('new_client', (data) => {
 
 $(document).ready(function() {
 	
-	let page_reload = $("#page_reload").val();
-	if(page_reload != null && page_reload != undefined && page_reload == 0 ) {
-		let page_reload_new = page_reload + 1 ;  
-		$("#page_reload").val(page_reload_new)
-		location.reload(true)
-	}
+// 	let page_reload = $("#page_reload").val();
+// 	if(page_reload != null && page_reload != undefined && page_reload == 0 ) {
+// 		let page_reload_new = page_reload + 1 ;  
+// 		$("#page_reload").val(page_reload_new)
+// 		location.reload(true)
+// 	}
 	
 	
 	localStorage.removeItem("username");
