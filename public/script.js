@@ -1,42 +1,5 @@
-var socket = io.connect( 'https://gopi-node-chat-app.herokuapp.com/' );
-
-function SendMessage() {
-	localStorage_username = localStorage.getItem("username");
-	const chat_message = document.getElementById('chat_message').value;
-	socket.emit( 'chat_message',{chat_message:chat_message,username:localStorage_username});	
-}
-
-function AddUser() {
-	const username = document.getElementById('username').value;
-	localStorage.setItem("username",username);
-	alert('Your Name Change to '+username);
-}
-
-socket.on( 'chat_message', (data) => {
-	console.log(data);
-	console.log("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
-	$('#chatroom').append("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
-})
-
-
-socket.on('new_client', (data) => {
-	console.log(` hello world`)
-	$('#chatroom').append("<p class='message'>New User Added</p>")
-})
-
-
-
-$(document).ready(function() {
-	
-// 	let page_reload = $("#page_reload").val();
-// 	if(page_reload != null && page_reload != undefined && page_reload == 0 ) {
-// 		let page_reload_new = page_reload + 1 ;  
-// 		$("#page_reload").val(page_reload_new)
-// 		location.reload(true)
-// 	}
-	
-	
-	localStorage.removeItem("username");
+$(document).ready(function() {	
+	/*localStorage.removeItem("username");
 	
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
@@ -52,124 +15,78 @@ $(document).ready(function() {
 
 	if(googleTockenId != null & name != null && email != null && Image != null & (page =="/" || page =="index.html") ) { 
     	window.location.href="/chatroom";
-	}
+	}*/
 })
 
 
 /***** added 08-07-2021    **********/
 
- function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log(profile);
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-	 
-	  var googleTockenId = profile.getId();
-    var name = profile.getName();
-    var email = profile.getEmail();    
-    var Image = profile.getImageUrl();   
-    const userData = {googleTockenId:googleTockenId,name:name,email:email,Image:Image}          
-    if(googleTockenId != null & name != null && email != null && Image != null   ) {
-    	localStorage.setItem("googleTockenId", googleTockenId);
-    	localStorage.setItem("name", name);
-    	localStorage.setItem("email", email);
-    	localStorage.setItem("Image", Image);
-    	window.location.href="/chatroom";
-    }
-      }
-
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {    
-                alert("Logout Successfully")
-                location.reload(true);        
-            });
-
-            auth2.disconnect();
-        }
-
-/*function renderButton() {
-     gapi.load('auth2', function() {
-        gapi.auth2.init();
-      });
-    gapi.signin2.render('g-signin2', {
-        'scope': 'profile email',
-        'width': 250,
-        'height': 40,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSignIn,
-        'onfailure': onFailure
-    });
-}
 
 function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
     var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
+    console.log(profile);
+    /*console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());*/
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+
     var googleTockenId = profile.getId();
     var name = profile.getName();
     var email = profile.getEmail();    
     var Image = profile.getImageUrl();   
     const userData = {googleTockenId:googleTockenId,name:name,email:email,Image:Image}          
     if(googleTockenId != null & name != null && email != null && Image != null   ) {
+        localStorage.setItem("googleTockenId", googleTockenId);
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("Image", Image);
+        window.location.href="/chatroom";
+    }
+}
+
+ function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log(profile);
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+	 
+	var googleTockenId = profile.getId();
+    var name = profile.getName();
+    var email = profile.getEmail();    
+    var Image = profile.getImageUrl();   
+    const userData = {googleTockenId:googleTockenId,name:name,email:email,Image:Image}          
+    if(googleTockenId != null & name != null && email != null && Image != null   ) {
     	localStorage.setItem("googleTockenId", googleTockenId);
     	localStorage.setItem("name", name);
     	localStorage.setItem("email", email);
     	localStorage.setItem("Image", Image);
     	window.location.href="/chatroom";
-    } 
-}
-
-// Sign-in failure callback
-function onFailure(error) {
-    alert(error);
-}
-
-// Sign out the user
-function signOut() {
-    if(confirm("Are you sure to signout?")){
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-    localStorage.removeItem("googleTockenId");
-    localStorage.removeItem("name");
-    localStorage.removeItem("email");
-    localStorage.removeItem("Image");  
-		
-        });
-
-        auth2.disconnect();
-	location.reload(true)
-	//window.location.href="/";
     }
 }
 
-
-function saveUserData(googleTockenId,name,email,profile) {
-    $.post("script.php",{authProvider:"Google",googleTockenId:googleTockenId,name:name,email:email,profile:profile},
-        function (response) {
-        var data = response.split('^');
-        if (data[1] == "loggedIn"){
-            $("#loaderIcon").hide('fast');
-            $("#g-signin2").hide('fast');
-
-            $("#profileLabel").attr('src',profile);
-            $("#nameLabel").html(name);
-            $("#emailLabel").html(email);
-            $("#googleIdLabel").html(googleTockenId);
-
-            $("#loginDetails").show();
-        }
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {    
+        alert("Logout Successfully")
+        location.reload(true);        
     });
-}*/
+
+    auth2.disconnect();
+}
+
