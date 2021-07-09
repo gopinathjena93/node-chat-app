@@ -72,8 +72,8 @@ $(document).ready(function() {
     var name = profile.getName();
     var email = profile.getEmail();    
     var Image = profile.getImageUrl();   
-    const local_email = getItem("email");
-    const local_name = getItem("name");
+    const local_email = localStorage.getItem("email");
+    const local_name = localStorage.getItem("name");
     if(local_email == null && local_name == null) { 
         if(googleTockenId != null & name != null && email != null && Image != null   ) {
         	localStorage.setItem("googleTockenId", googleTockenId);
