@@ -98,10 +98,11 @@ function signOut() {
     localStorage.removeItem("name");
     localStorage.removeItem("email");
     localStorage.removeItem("Image");  
-		window.location.href="/";
+		
         });
 
         auth2.disconnect();
+	window.location.href="/";
     }
 }
 
