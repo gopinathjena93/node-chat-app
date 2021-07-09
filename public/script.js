@@ -50,6 +50,9 @@ $(document).ready(function() {
 /***** added 08-07-2021    **********/
 
 function renderButton() {
+     gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
     gapi.signin2.render('g-signin2', {
         'scope': 'profile email',
         'width': 250,
@@ -101,6 +104,7 @@ function signOut() {
         auth2.disconnect();
     }
 }
+
 
 function saveUserData(googleTockenId,name,email,profile) {
     $.post("script.php",{authProvider:"Google",googleTockenId:googleTockenId,name:name,email:email,profile:profile},
