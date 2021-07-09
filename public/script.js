@@ -102,7 +102,7 @@ function signOut() {
         });
 
         auth2.disconnect();
-	    window.location(true);
+	location.reload(true)
 	//window.location.href="/";
     }
 }
