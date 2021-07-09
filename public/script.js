@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
 
-    if(page == "chatroom") onLoad();
+
 
 	/*const googleTockenId = localStorage.getItem("googleTockenId");
     const name = localStorage.getItem("name");
@@ -82,19 +82,12 @@ $(document).ready(function() {
     }
 }
 
-function onLoad() {
-    gapi.load('auth2', function() {
-        gapi.auth2.init();
-    });
-}
-
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {    
-        alert("Logout Successfully")
-        location.reload(true);        
+    auth2.signOut().then(function () {                
     });
-
+    alert("Logout Successfully")
+    location.reload(true);  
     auth2.disconnect();
 }
 
