@@ -84,10 +84,15 @@ $(document).ready(function() {
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {                
+    auth2.signOut().then(function () { 
+        localStorage.removeItem("googleTockenId");
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+        localStorage.removeItem("Image");  
+        alert("Logout Successfully")
+        location.reload(true);               
     });
-    alert("Logout Successfully")
-    location.reload(true);  
+    
     auth2.disconnect();
 }
 
