@@ -102,7 +102,8 @@ function signOut() {
         });
 
         auth2.disconnect();
-	window.location.href="/";
+	    window.location(true);
+	//window.location.href="/";
     }
 }
 
