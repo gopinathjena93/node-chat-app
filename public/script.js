@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 
 
-	/*const googleTockenId = localStorage.getItem("googleTockenId");
+	const googleTockenId = localStorage.getItem("googleTockenId");
     const name = localStorage.getItem("name");
     const email = localStorage.getItem("email");
     const Image = localStorage.getItem("Image");  
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 	if(googleTockenId != null & name != null && email != null && Image != null & (page =="/" || page =="index.html") ) { 
     	window.location.href="/chatroom";
-	}*/
+	}
 })
 
 
