@@ -61,22 +61,20 @@ socket.on('new_client', (data) => {
 	console.log(` hello world`)
 	localEmail = localStorage.getItem('email');
 	localName = localStorage.getItem('name');
-	localImage = localStorage.getItem('Image');
-
-	socket.emit( 'new_user_join',{serverEmail:localEmail,serverName:localName,serverImage:localImage});
+	localPageReload = localStorage.getItem('page_reload');
+	localStorage.setItem('page_reload',true);
+	socket.emit( 'new_user_join',{serverEmail:localEmail,serverName:localName,serverPageReload:localPageReload});
 	//$('#chatroom').append("<p class='message'>New User Added</p>")
 })
 
 socket.on('new_user_join', (data) => {
-	localEmail = localStorage.getItem('email');
-	localName = localStorage.getItem('name');
-	localImage = localStorage.getItem('Image');	
+	localEmail = localStorage.getItem('email');		
 
 	serverEmail = data.serverEmail;
 	serverName = data.serverName;
-	serverImage = data.serverImage;	
+	serverPageReload = data.serverPageReload;	
 
-	if(serverEmail != localEmail) {
+	if(serverEmail != localEmail && serverPageReload == null) {
 		const join_html = `<div class="message-feed media">                
 	        <div class="media-body-chat">
 	            <div class="join-chat">
