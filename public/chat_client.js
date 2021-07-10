@@ -21,33 +21,34 @@ function AddUser() {
 socket.on( 'chat_message', (data) => {
 	localEmail = localStorage.getItem('email');
 	localName = localStorage.getItem('name');
-	localImage = localStorage.getItem('Image');
+	localImage = localStorage.getItem('Image');	
 
 	serverEmail = data.serverEmail;
 	serverName = data.serverName;
-	serverImage = data.serverImage;
+	serverImage = data.serverImage;	
 
 	if(serverEmail == localEmail) {
 		const chatroomHtml = `<div class="message-feed right">
 			<div class="pull-right">
-				<img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+				<img src="${serverImage}" alt="" class="img-avatar" style="width:40px">
 			</div>
 			<div class="media-body">
 				<div class="mf-content">
 					${data.chat_message}
 				</div>
-				<small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 10:10</small>
+				<div class="mf-content">${serverName}</div>
 			</div>
 		</div>`;
 		$('#chatroom').append(chatroomHtml)
 	} else { 	
 		const chatroomHtml = `<div class="message-feed media">
 			<div class="pull-left">
-				<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
+				<img src="${serverImage}" alt="" class="img-avatar" style="width:40px">
 			</div>
 			<div class="media-body">
 				<div class="mf-content">${data.chat_message}</div>
-				<small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:00</small>
+				<div class="mf-content">${serverName}</div>
+				
 			</div>
 		</div>`;
 		$('#chatroom').append(chatroomHtml)
