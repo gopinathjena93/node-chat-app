@@ -23,9 +23,9 @@ socket.on( 'chat_message', (data) => {
 	localName = localStorage.getItem('name');
 	localImage = localStorage.getItem('Image');
 
-	serverEmail = data.email;
-	serverName = data.name;
-	serverImage = data.Image;	
+	serverEmail = data.serverEmail;
+	serverName = data.serverName;
+	serverImage = data.serverImage;
 
 	if(serverEmail == localEmail) {
 		const chatroomHtml = `<div class="message-feed right">
