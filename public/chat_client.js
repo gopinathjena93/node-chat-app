@@ -36,7 +36,7 @@ socket.on( 'chat_message', (data) => {
 				<div class="mf-content">
 					${data.chat_message}
 				</div>
-				<div class="mf-content">${serverName}</div>
+				<small class="mf-date">${serverName}</small>
 			</div>
 		</div>`;
 		$('#chatroom').append(chatroomHtml)
@@ -47,8 +47,7 @@ socket.on( 'chat_message', (data) => {
 			</div>
 			<div class="media-body">
 				<div class="mf-content">${data.chat_message}</div>
-				<div class="mf-content">${serverName}</div>
-				
+				<small class="mf-date">${serverName}</small>
 			</div>
 		</div>`;
 		$('#chatroom').append(chatroomHtml)
