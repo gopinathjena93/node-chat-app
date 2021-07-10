@@ -1,37 +1,112 @@
-<!DOCTYPE html>
 <html>
    <head>
       <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
       <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" type="text/css" href="style.css" >
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script src="socket.io/socket.io.js"></script>   
-      <script src="https://apis.google.com/js/platform.js" async defer></script>
-      <meta name="google-signin-client_id" content="532741261360-ht2haamk4cm0e8tjee2c7ts54akic096.apps.googleusercontent.com">
-      <script src="script.js"></script>
-      <script src="chat_client.js"></script>
-      <title>Simple Chat App</title>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="chat-app.css">
+      <title>Chat App</title>
    </head>
 
-  <body>
-    <header>
-      <h1>Simple Chat App</h1>
-    </header>
+   <body>
+      <header>
+         <h1 style="text-align: center;">Chat App</h1>
+      </header>
 
-    <section>
-      <div id="change_username">
-  <input id="username" type="text" />
-  <button id="send_username" type="button" onclick="AddUser()">Change username</button>
+      <div class="container bootstrap snippets bootdey">
+         <div class="tile tile-alt" id="messages-main">            
+            <div class="ms-body" >
+               <div id="chatroom">
+                  <div class="action-header clearfix">
+                     <div class="visible-xs" id="ms-menu-trigger">
+                        <i class="fa fa-bars"></i>
+                     </div>
+                     
+                     <div class="pull-left hidden-xs">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar m-r-10" style="height: 70px; width: 70px; margin-right: 5px;">
+                        <div class="lv-avatar pull-left">
+                        </div>
+                        
+                     </div>
+                     <div class="pull-left hidden-xs">
+                     <span>Login As </span>
+                        <div><span>David Parbell</span></div>
+                        <div><span>gopinathjena93@gmail.com</span></div>
+                     </div>
+                     <button class="btn btn-danger pull-right hidden-xs">Logout</button>   
+                                      
+                  </div>
+                  <div class="message-feed media">
+                     <div class="pull-left">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
+                     </div>
+                     <div class="media-body">
+                        <div class="mf-content">
+                           Quisque consequat arcu eget odio cursus, ut tempor arcu vestibulum. Etiam ex arcu, porta a urna non, lacinia pellentesque orci. Proin semper sagittis erat, eget condimentum sapien viverra et. Mauris volutpat magna nibh, et condimentum est rutrum a. Nunc sed turpis mi. In eu massa a sem pulvinar lobortis.
+                        </div>
+                        <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:00</small>
+                     </div>
+                  </div>
+                  <div class="message-feed right">
+                     <div class="pull-right">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+                     </div>
+                     <div class="media-body">
+                        <div class="mf-content">
+                           Mauris volutpat magna nibh, et condimentum est rutrum a. Nunc sed turpis mi. In eu massa a sem pulvinar lobortis.
+                        </div>
+                        <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:30</small>
+                     </div>
+                  </div>
+                  <div class="message-feed media">
+                     <div class="pull-left">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
+                     </div>
+                     <div class="media-body">
+                        <div class="mf-content">
+                           Etiam ex arcumentum
+                        </div>
+                        <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:33</small>
+                     </div>
+                  </div>
+                  <div class="message-feed right">
+                     <div class="pull-right">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+                     </div>
+                     <div class="media-body">
+                        <div class="mf-content">
+                           Etiam nec facilisis lacus. Nulla imperdiet augue ullamcorper dui ullamcorper, eu laoreet sem consectetur. Aenean et ligula risus. Praesent sed posuere sem. Cum sociis natoque penatibus et magnis dis parturient montes,
+                        </div>
+                        <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 10:10</small>
+                     </div>
+                  </div>
+                  <div class="message-feed media">
+                     <div class="pull-left">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
+                     </div>
+                     <div class="media-body">
+                        <div class="mf-content">
+                           Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ac tortor ut elit sodales varius. Mauris id ipsum id mauris malesuada tincidunt. Vestibulum elit massa, pulvinar at sapien sed, luctus vestibulum eros. Etiam finibus tristique ante, vitae rhoncus sapien volutpat eget
+                        </div>
+                        <small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 10:24</small>
+                     </div>
+                  </div>
+               </div>   
+
+               <div class="msb-reply">
+                  <textarea placeholder="What's on your mind..." id="chat_message"></textarea>
+                  <button onclick="SendMessage()"><i class="fa fa-paper-plane-o"></i></button>
+               </div>
+            </div>
+         </div>
       </div>
-    </section>
-     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"  style="display: none"></div>
-     <a href="javaScript:void(0)" onclick="signOut();" class="btn btn-danger">Logout</a>
 
-    <section id="chatroom">
-      <section id="feedback"></section>
-    </section>    
-
-    <section id="input_zone"> 
-      <input id="chat_message" class="vertical-align" type="text" />
-      <button id="send_message" class="vertical-align" type="button" onclick="SendMessage()">Send</button>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="socket.io/socket.io.js"></script>   
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <meta name="google-signin-client_id" content="532741261360-ht2haamk4cm0e8tjee2c7ts54akic096.apps.googleusercontent.com">      
+      <script src="chat_client.js"></script>
+      <script src="script.js"></script>
+   </body>
 </html>
