@@ -63,7 +63,7 @@ socket.on('new_client', (data) => {
 	localName = localStorage.getItem('name');
 	localImage = localStorage.getItem('Image');
 
-	socket.emit( 'new_user_join',{serverEmail:localEmail,serverName:localName,serverImage:localImage,});
+	socket.emit( 'new_user_join',{serverEmail:localEmail,serverName:localName,serverImage:localImage});
 	//$('#chatroom').append("<p class='message'>New User Added</p>")
 })
 
