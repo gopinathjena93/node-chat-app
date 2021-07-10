@@ -62,5 +62,11 @@ socket.on('new_client', (data) => {
 })
 
 $(document).ready(function() {
+	localEmail = localStorage.getItem('email');
+	localName = localStorage.getItem('name');
+	localImage = localStorage.getItem('Image');
+	$("#login_by img").attr("src",localImage);	
+	$("#login_by div span").html(localName);
+	$("#login_by div:nth-child(2) span").html(localEmail);
 	localStorage.removeItem("username");	
 })
