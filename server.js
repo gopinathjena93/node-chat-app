@@ -31,7 +31,7 @@ io.sockets.on( 'connection', function( client ) {
 
     client.on( 'new_user_join', ( data ) => {
       console.log(data)
-      io.sockets.emit( 'new_user_join',{serverEmail:data.serverEmail,serverName:data.serverEmail,serverImage:data.serverImage});
+      io.sockets.emit( 'new_user_join',{serverEmail:data.serverEmail,serverName:data.serverName,serverImage:data.serverImage});
    }); 
 
   	client.on( 'change_username', ( data ) => {
