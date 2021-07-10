@@ -1,10 +1,15 @@
-var socket = io.connect( 'https://gopi-node-chat-app.herokuapp.com/' );
-//var socket = io.connect( 'http://192.168.0.11:4000' );
+var socket = io.connect( 'http://localhost:4000' );
+
 
 function SendMessage() {
 	localStorage_username = localStorage.getItem("username");
 	const chat_message = document.getElementById('chat_message').value;
-	socket.emit( 'chat_message',{chat_message:chat_message,username:localStorage_username});	
+
+	localEmail = localStorage.getItem('email');
+	localName = localStorage.getItem('name');
+	localImage = localStorage.getItem('Image');
+
+	socket.emit( 'chat_message',{chat_message:chat_message,serverEmail:localEmail,serverName:localName,serverImage:localImage,});	
 }
 
 function AddUser() {
@@ -14,14 +19,46 @@ function AddUser() {
 }
 
 socket.on( 'chat_message', (data) => {
-	console.log(data);
-	console.log("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
-	$('#chatroom').append("<p class='message'> "+data.username+":"+data.chat_message+"</p>")
+	localEmail = localStorage.getItem('email');
+	localName = localStorage.getItem('name');
+	localImage = localStorage.getItem('Image');
+
+	serverEmail = data.email;
+	serverName = data.name;
+	serverImage = data.Image;	
+
+	if(serverEmail == localEmail) {
+		const chatroomHtml = `<div class="message-feed right">
+			<div class="pull-right">
+				<img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+			</div>
+			<div class="media-body">
+				<div class="mf-content">
+					${data.chat_message}
+				</div>
+				<small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 10:10</small>
+			</div>
+		</div>`;
+		$('#chatroom').append(chatroomHtml)
+	} else { 	
+		const chatroomHtml = `<div class="message-feed media">
+			<div class="pull-left">
+				<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-avatar">
+			</div>
+			<div class="media-body">
+				<div class="mf-content">${data.chat_message}</div>
+				<small class="mf-date"><i class="fa fa-clock-o"></i> 20/02/2015 at 09:00</small>
+			</div>
+		</div>`;
+		$('#chatroom').append(chatroomHtml)
+	} 	
+	
 })
 
 socket.on('new_client', (data) => {
+	console.log(data)
 	console.log(` hello world`)
-	$('#chatroom').append("<p class='message'>New User Added</p>")
+	//$('#chatroom').append("<p class='message'>New User Added</p>")
 })
 
 $(document).ready(function() {
