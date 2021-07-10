@@ -20,7 +20,8 @@ io.sockets.on( 'connection', function( client ) {
   	client.on( 'chat_message', ( data ) => {
   		console.log(data.username);
   		if(data.username != null ) username = data.username; 
-		io.sockets.emit( 'chat_message',{username:username,chat_message:data.chat_message} );
+		io.sockets.emit( 'chat_message',{username:username,chat_message:data.chat_messageserverEmail:data.serverEmail,serverName:data.serverName,
+                serverImage:data.serverImage} );
 	});
 
   	client.on( 'change_username', ( data ) => {
