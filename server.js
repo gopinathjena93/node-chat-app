@@ -5,6 +5,7 @@ var path = require( 'path' );
 
 const port = process.env.PORT || 3000
 
+
 var app = express();
 var server = http.createServer( app );
 
@@ -12,20 +13,29 @@ app.use(express.static(path.join(__dirname,'public')));
 var io = socket.listen( server );
 
 io.sockets.on( 'connection', function( client ) {
+    console.log(client);
   	console.log( "New client !" );
     io.sockets.emit( 'new_client',{message:"New Client"} );
 
-
-  	username = "New User";
+	
   	client.on( 'chat_message', ( data ) => {
-  		console.log(data.username);
+  		console.log(data);
   		if(data.username != null ) username = data.username; 
-		io.sockets.emit( 'chat_message',{username:username,chat_message:data.chat_message} );
-	});
+		io.sockets.emit( 'chat_message',{
+      serverEmail:data.serverEmail,
+      serverName:data.serverName,
+      serverImage:data.serverImage,
+      chat_message:data.chat_message
+    } );
+	  });
 
   	client.on( 'change_username', ( data ) => {
   		socket.username = data.username;
-	});
+	  });
+
+    clint.on('login_success', (data) => {
+      console.log('hiiiiii')
+    });
 });
 
 app.get("/",(req,res) => {
