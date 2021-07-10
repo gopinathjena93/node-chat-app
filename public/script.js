@@ -13,7 +13,7 @@ $(document).ready(function() {
     	window.location.href="/";
 	}
 
-	if(googleTockenId != null & name != null && email != null && Image != null & (page =="/" || page =="index.html") ) { 
+	if(googleTockenId != null & name != null && email != null && Image != null & (page =="" || page =="index.html") ) { 
     	window.location.href="/chatroom";
 	}
 })
@@ -48,7 +48,6 @@ $(document).ready(function() {
         	localStorage.setItem("name", name);
         	localStorage.setItem("email", email);
         	localStorage.setItem("Image", Image);
-            socket.emit( 'login_success',{name:name,email:email,Image:Image});
         	window.location.href="/chatroom";
         }
     }    
@@ -61,6 +60,7 @@ function signOut() {
         localStorage.removeItem("name");
         localStorage.removeItem("email");
         localStorage.removeItem("Image");  
+        localStorage.removeItem("page_reload");  
         alert("Logout Successfully")
         location.reload(true);               
     });
