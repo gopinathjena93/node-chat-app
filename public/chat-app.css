@@ -210,3 +210,25 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+
+.message-feed:not(.right) .join-chat {
+    background: #28f403;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.message-feed.right .join-chat {
+    background: #eee;
+}
+
+.join-chat {
+    padding: 12px 17px 13px;
+    border-radius: 2px;
+    display: inline-block;
+    max-width: 80%
+}
+
+.media-body-chat {
+    text-align: center;
+}
+
