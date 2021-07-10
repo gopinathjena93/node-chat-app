@@ -1,4 +1,4 @@
-var socket = io.connect( 'http://localhost:4000' );
+var socket = io.connect( 'https://gopi-node-chat-app.herokuapp.com/' );
 
 
 function SendMessage() {
