@@ -4,6 +4,7 @@ var socket = io.connect( 'https://gopi-node-chat-app.herokuapp.com/' );
 function SendMessage() {
 	localStorage_username = localStorage.getItem("username");
 	const chat_message = document.getElementById('chat_message').value;
+	document.getElementById('chat_message').value='';
 
 	localEmail = localStorage.getItem('email');
 	localName = localStorage.getItem('name');
